@@ -39,6 +39,7 @@ client.once('ready', () => {
 // log the client on Discord
 client.login(ini.DISCORD_TOKEN);
 
+// on any message sent to the channel where the bot is running, run this
 client.on('message', async message => {
 	const input = message.content.split(' ');
 	let dice = 0;
@@ -72,7 +73,7 @@ client.on('message', async message => {
 						break;
 					}
 				}
-				const sheetName = playerName + '!A1:B48';
+				const sheetName = playerName + ini.DATA_RANGE;
 
 				// get stat value for a given stat
 				let statValue = await getStatValue(input[i], sheetName);
